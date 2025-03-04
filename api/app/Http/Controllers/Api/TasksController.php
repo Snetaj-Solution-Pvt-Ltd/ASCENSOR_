@@ -61,7 +61,7 @@ class TasksController extends Controller
         $category = $request->category;
         $status = $request->status;
 
-        $tasks = Task::with('category')->orderBy('updated_at','desc');
+        $tasks = Task::with('category','user')->orderBy('updated_at','desc');
         if ($request->has('category') && $request->category != '') {
             $tasks = $tasks->where('category_id', $category);
         }
